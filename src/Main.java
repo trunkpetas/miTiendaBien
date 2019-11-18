@@ -1,4 +1,5 @@
 package src; 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,11 @@ public class Main {
 	 *  => PISTA: regex
 	 * 
 	 * *-> Para nota ;)
+	 * @throws ParseException 
 	 * 
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		menuMain mM = new menuMain();
 		

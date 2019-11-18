@@ -24,7 +24,7 @@ public class menuCategoria {
 		Scanner keyboard = new Scanner(System.in);
 		do {
 			System.out.println("~~~~~~~~~~MENÚ_CATEGORIAS~~~~~~~~~\n");
-			System.out.println("1.-Añadir\n2.-Leer\n3.-Actualizar\n4.-Eliminar\n5.-Salir\n");
+			System.out.println("1.-Añadir\n2.-Leer\n3.-Actualizar\n4.-Eliminar\n5.-VUELTA AL MENU MAIN\n");
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
 			opcion = Integer.parseInt(keyboard.nextLine());
@@ -48,7 +48,7 @@ public class menuCategoria {
 				deleteCategorias();
 				break;
 			case 5:
-				System.out.println("ATRÁS\n");// salirApp();
+				System.out.println("VUELTA AL MENU MAIN\n");// salirApp();
 
 				salir = true;
 				break;

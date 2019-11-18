@@ -1,5 +1,6 @@
 package src.menusCrud;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class menuMain {
@@ -13,7 +14,7 @@ public class menuMain {
 		
 	}
 	
-	public void display() {
+	public void display() throws ParseException {
 	
 	Scanner keyboard = new Scanner(System.in);
 	do {
