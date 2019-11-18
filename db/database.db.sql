@@ -1,46 +1,47 @@
-BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS "producto" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"created"	INTEGER DEFAULT CURRENT_TIMESTAMP,
-	"nombre"	TEXT,
-	"precio"	INTEGER DEFAULT 0,
-	"stock"	INTEGER DEFAULT 0,
-	"id_categoria"	INTEGER
+USE mitienda;
+START TRANSACTION;
+CREATE TABLE IF NOT EXISTS producto (
+	id	INTEGER PRIMARY KEY AUTO_INCREMENT,
+	created	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	nombre	TEXT,
+	precio	INTEGER DEFAULT 0,
+	stock	INTEGER DEFAULT 0,
+	id_categoria	INTEGER
 );
-CREATE TABLE IF NOT EXISTS "facturas_linea" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"created"	INTEGER DEFAULT CURRENT_TIMESTAMP,
-	"id_factura"	INTEGER,
-	"nombre"	TEXT,
-	"precio"	INTEGER
+CREATE TABLE IF NOT EXISTS facturas_linea (
+	id	INTEGER PRIMARY KEY AUTO_INCREMENT,
+	created	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	id_factura	INTEGER,
+	nombre	TEXT,
+	precio	INTEGER
 );
-CREATE TABLE IF NOT EXISTS "facturas" (
-	"id"	INTEGER,
-	"created"	INTEGER DEFAULT CURRENT_TIMESTAMP,
-	"fecha"	INTEGER,
-	"id_cliente"	INTEGER,
-	"serie"	INTEGER,
-	PRIMARY KEY("id","id_cliente")
+CREATE TABLE IF NOT EXISTS facturas (
+	id	INTEGER,
+	created	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	fecha	TIMESTAMP,
+	id_cliente	INTEGER,
+	serie	INTEGER,
+	PRIMARY KEY(id,id_cliente)
 );
-CREATE TABLE IF NOT EXISTS "mn_categoria_producto" (
-	"id_categoria"	INTEGER,
-	"id_producto"	INTEGER
+CREATE TABLE IF NOT EXISTS mn_categoria_producto (
+	id_categoria	INTEGER,
+	id_producto	INTEGER
 );
-CREATE TABLE IF NOT EXISTS "categorias" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
-	"created"	INTEGER DEFAULT CURRENT_TIMESTAMP,
-	"nombre"	TEXT UNIQUE
+CREATE TABLE IF NOT EXISTS categorias (
+	id	INTEGER PRIMARY KEY AUTO_INCREMENT,
+	created	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	nombre	VARCHAR UNIQUE
 );
-CREATE TABLE IF NOT EXISTS "clientes" (
-	"id"	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-	"created"	INTEGER DEFAULT CURRENT_TIMESTAMP,
-	"nombre"	TEXT NOT NULL,
-	"dni"	TEXT NOT NULL UNIQUE,
-	"direccion"	TEXT,
-	"telefono"	TEXT,
-	"email"	TEXT
+CREATE TABLE IF NOT EXISTS clientes (
+	id	INTEGER PRIMARY KEY AUTO_INCREMENT UNIQUE,
+	created	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	nombre	VARCHAR NOT NULL,
+	dni	VARCHAR NOT NULL UNIQUE,
+	direccion	TEXT,
+	telefono	TEXT,
+	email	TEXT
 );
-INSERT INTO "producto" ("id","created","nombre","precio","stock","id_categoria") VALUES (1,'2019-10-28 12:24:10','PROD 01',100,1,1),
+INSERT INTO producto (id,created,nombre,precio,stock,id_categoria) VALUES (1,'2019-10-28 12:24:10','PROD 01',100,1,1),
  (2,'2019-10-28 12:24:51','PROD 01',100,1,1),
  (3,'2019-10-28 12:25:27','PROD 01',100,1,1),
  (4,'2019-10-28 12:26:02','PROD 01',100,1,1),
@@ -167,10 +168,10 @@ INSERT INTO "producto" ("id","created","nombre","precio","stock","id_categoria")
  (125,'2019-10-30 12:26:41','PROD 01',100,1,1),
  (126,'2019-10-30 12:26:41','PROD 01',100,1,1),
  (127,'2019-11-07 11:48:09','PROD 01',100,1,1);
-INSERT INTO "categorias" ("id","created","nombre") VALUES (1,'2019-10-28 12:52:58','Cat 01');
-INSERT INTO "clientes" ("id","created","nombre","dni","direccion","telefono","email") VALUES (1,'2019-10-23 11:25:08','cliente01','123456789K','Calle molona','111222333','user@user.com'),
+INSERT INTO categorias (id,created,nombre) VALUES (1,'2019-10-28 12:52:58','Cat 01');
+INSERT INTO clientes (id,created,nombre,dni,direccion,telefono,email) VALUES (1,'2019-10-23 11:25:08','cliente01','123456789K','Calle molona','111222333','user@user.com'),
  (2,'2019-10-24 11:53:10','cliente 0224','1234',NULL,'1234567','user02@user.com'),
  (3,'2019-10-30 11:56:38','Cliente','11222334455',NULL,NULL,NULL),
  (4,'2019-10-30 12:26:41','Cliente','567466',NULL,NULL,NULL),
  (5,'2019-11-07 11:48:10','Cliente','546861',NULL,NULL,NULL);
-COMMIT;
+COMMIT;mitiendamitienda
