@@ -70,13 +70,16 @@ public class menuCategoria {
 	}
 
 	public void readCat() {
+		Categoria cat = new Categoria();
+		categoriasLista = cat.list();
+		
 		if(categoriasLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que leer espabila");
 		}else {
-		Categoria cat = new Categoria();
+		
 		categoriasLista = cat.list();
 		for (int i = 0; i < categoriasLista.size(); i++) {
-			System.out.println(categoriasLista.get(i));
+			System.out.println(i + "." +categoriasLista.get(i));
 
 		}
 		}
@@ -94,7 +97,7 @@ public class menuCategoria {
 		System.out.println("que quieres actualizar capullo");
 		categoriasLista = cat.list();
 		for (int i = 0; i < categoriasLista.size(); i++) {
-			System.out.println(categoriasLista.get(i));
+			System.out.println(i + "." + categoriasLista.get(i));
 
 		}
 		categoriasLista = cat.list();
@@ -127,7 +130,7 @@ public class menuCategoria {
 		System.out.println("que quieres borrar ");
 		categoriasLista = cat.list();
 		for (int i = 0; i < categoriasLista.size(); i++) {
-			System.out.println(categoriasLista.get(i));
+			System.out.println(i + "." +categoriasLista.get(i));
 
 		}
 		deleteando = keyboard.nextLine();

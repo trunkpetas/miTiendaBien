@@ -91,14 +91,16 @@ public class menuClientes {
 	}
 
 	public void readcl() {
+
+		Clientes cl = new Clientes();
+		clientesLista = cl.list();
 		if(clientesLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que leer espabila");
 		}else {
 
-		Clientes cl = new Clientes();
 		clientesLista = cl.list();
 		for (int i = 0; i < clientesLista.size(); i++) {
-			System.out.println(clientesLista.get(i));
+			System.out.println(i + "." +clientesLista.get(i));
 
 		}
 		}
@@ -115,7 +117,7 @@ public class menuClientes {
 		System.out.println("que quieres actualizar capullo");
 		clientesLista = cl.list();
 		for (int i = 0; i < clientesLista.size(); i++) {
-			System.out.println(clientesLista.get(i));
+			System.out.println(i + "." +clientesLista.get(i));
 
 		}
 		clientesLista = cl.list();
@@ -163,7 +165,7 @@ public class menuClientes {
 		System.out.println("que quieres borrar ");
 		clientesLista = cl.list();
 		for (int i = 0; i < clientesLista.size(); i++) {
-			System.out.println(clientesLista.get(i));
+			System.out.println(i + "." +clientesLista.get(i));
 
 		}
 		deleteando = keyboard.nextLine();

@@ -81,18 +81,20 @@ public class menuFacturas {
 
 	}
 
-	public void readFac() {
+	public void readFac() { 
+	Factura fl = new Factura();
+	facturasLista = fl.list();
 		if(facturasLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que leer espabila");
 		}else {
 
-		Factura fl = new Factura();
 		facturasLista = fl.list();
 		for (int i = 0; i < facturasLista.size(); i++) {
-			System.out.println(facturasLista.get(i));
+			System.out.println(i + "." +facturasLista.get(i));
 
 		}
 		}
+		
 
 	}
 
@@ -106,7 +108,7 @@ public class menuFacturas {
 		System.out.println("que quieres actualizar capullo");
 		facturasLista = fc.list();
 		for (int i = 0; i < facturasLista.size(); i++) {
-			System.out.println(facturasLista.get(i));
+			System.out.println(i + "." +facturasLista.get(i));
 
 		}
 		facturasLista = fc.list();
@@ -146,7 +148,7 @@ public class menuFacturas {
 		System.out.println("que quieres borrar ");
 		facturasLista = fc.list();
 		for (int i = 0; i < facturasLista.size(); i++) {
-			System.out.println(facturasLista.get(i));
+			System.out.println(i + "." +facturasLista.get(i));
 
 		}
 		deleteando = keyboard.nextLine();

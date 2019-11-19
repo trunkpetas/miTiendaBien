@@ -161,6 +161,7 @@ public class DbController {
 		  
 		String sql = "SELECT * FROM "+obj.getTable(); 
 		List<DbObject> dev = this.doExecuteQuery(sql, obj);
+		System.out.println(sql+" :: "+ dev.size());
 		
 		return dev;
 	} 

@@ -85,13 +85,15 @@ public class menuProductos {
 	}
 
 	public void readCat() {
+		Producto prd = new Producto();
+		productosLista = prd.list();
+		
 		if(productosLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que mostrar espabila");
 		}else {
-		Producto prd = new Producto();
 		productosLista = prd.list();
 		for (int i = 0; i < productosLista.size(); i++) {
-			System.out.println(productosLista.get(i));
+			System.out.println(i + "." +productosLista.get(i));
 
 		}
 		}
@@ -110,7 +112,7 @@ public class menuProductos {
 		System.out.println("que quieres actualizar capullo");
 		productosLista = prd.list();
 		for (int i = 0; i < productosLista.size(); i++) {
-			System.out.println(productosLista.get(i));
+			System.out.println(i + "." +productosLista.get(i));
 
 		}
 		productosLista = prd.list();
@@ -155,7 +157,7 @@ public class menuProductos {
 		System.out.println("que quieres borrar ");
 		productosLista = prd.list();
 		for (int i = 0; i < productosLista.size(); i++) {
-			System.out.println(productosLista.get(i));
+			System.out.println(i + "." +productosLista.get(i));
 
 		}
 		deleteando = keyboard.nextLine();
