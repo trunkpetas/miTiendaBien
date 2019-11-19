@@ -3,6 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Sqlite"/>
-	<classpathentry kind="lib" path="C:/Users/Alejandro/Desktop/pene/mysql-connector-java-5.1.48.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Castelao/Downloads/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

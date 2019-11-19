@@ -21,12 +21,12 @@ public class Main {
 	 * 	-> Categoria: CRUD
 	 *  -> Producto: CRUD // NOTA: Un producto tiene un id_Categoria obligatorio, y tiene existir la categoria
 	 *  -> Cliente: CRUD
-	 * 
+	 * 1
 	 * 2.- Listar:
 	 *  -> Productos de una Categoria // Dado un ID de categoria; tener todos los productos
 	 * 
 	 * 3*.- Validaciones:
-	 *  -> Los datos del C/U (Create/Update) tienen que cumplir condiciones coherentes. 
+	 *  -> Los datos del C/U (1Create/Update) tienen que cumplir condiciones coherentes. 
 	 *  => PISTA: regex
 	 * 
 	 * *-> Para nota ;)

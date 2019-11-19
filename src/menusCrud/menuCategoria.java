@@ -70,17 +70,24 @@ public class menuCategoria {
 	}
 
 	public void readCat() {
-
+		if(categoriasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que leer espabila");
+		}else {
 		Categoria cat = new Categoria();
 		categoriasLista = cat.list();
 		for (int i = 0; i < categoriasLista.size(); i++) {
 			System.out.println(categoriasLista.get(i));
 
 		}
+		}
 
 	}
 
 	public void actualizaCategorias() {
+		if(categoriasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que borrar espabila");
+		}else {
+		
 		Categoria cat = new Categoria();
 		String updateNombre;
 		String opcion;
@@ -93,21 +100,28 @@ public class menuCategoria {
 		categoriasLista = cat.list();
 		
 		updateNombre = keyboard.nextLine();
-		cat.getByid(Integer.parseInt(updateNombre));
+		//cat = (Categoria) cat.getByid(Integer.parseInt(updateNombre));
 
 		cat = (Categoria) categoriasLista.get(Integer.parseInt(updateNombre));
 		System.out.println("introduce el nuevo nombre");
 		opcion = keyboard.nextLine();
 		//int cambiaNombre = Integer.parseInt(opcion);
 		cat.setNombre(opcion);
-		DbController.getInstance().doUpdate(cat);
+		cat.save();
+		//DbController.getInstance().doUpdate(cat);
 		
 		//cat.setNombre(opcion);
 		//cat.save();;
-
+		}
 	}
 
 	public void deleteCategorias() {
+
+		if(categoriasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que borrar espabila");
+		}else {
+		
+		
 		Categoria cat = new Categoria();
 		String deleteando;
 		System.out.println("que quieres borrar ");
@@ -121,6 +135,7 @@ public class menuCategoria {
 		int delete = Integer.parseInt(deleteando);
 		categoriasLista.get(delete).delete();
 
+	}
 	}
 
 }

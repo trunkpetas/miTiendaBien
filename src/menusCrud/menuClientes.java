@@ -91,6 +91,9 @@ public class menuClientes {
 	}
 
 	public void readcl() {
+		if(clientesLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que leer espabila");
+		}else {
 
 		Clientes cl = new Clientes();
 		clientesLista = cl.list();
@@ -98,13 +101,17 @@ public class menuClientes {
 			System.out.println(clientesLista.get(i));
 
 		}
+		}
 
 	}
 
 	public void actualizacl() {
+		if(clientesLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que actualizar espabila");
+		}else {
 		Clientes cl = new Clientes();
 		String updateNombre;
-		String opcion;
+		
 		System.out.println("que quieres actualizar capullo");
 		clientesLista = cl.list();
 		for (int i = 0; i < clientesLista.size(); i++) {
@@ -114,21 +121,43 @@ public class menuClientes {
 		clientesLista = cl.list();
 		
 		updateNombre = keyboard.nextLine();
-		cl.getByid(Integer.parseInt(updateNombre));
+		//cl = (Clientes)cl.getByid(Integer.parseInt(updateNombre));
 
 		cl = (Clientes) clientesLista.get(Integer.parseInt(updateNombre));
+		String nombre;
 		System.out.println("introduce el nuevo nombre");
-		opcion = keyboard.nextLine();
+		nombre = keyboard.nextLine();
 		//int cambiaNombre = Integer.parseInt(opcion);
-		cl.setNombre(opcion);
-		DbController.getInstance().doUpdate(cl);
+		cl.setNombre(nombre);
+		System.out.println("Teclee la nueva direccion del neuvo cliente :");
+		String direccionClietne = keyboard.nextLine();
+		cl.setDireccion(direccionClietne);
+		System.out.println("Teclee el nuevo dni del nuevo clkiente :");
+		String dni = keyboard.nextLine();
+		cl.setDni(dni);
+		System.out.println("Teclee el nuevo email del clente");
+		String email = keyboard.nextLine();
+		cl.setEmail(email);
+		System.out.println("teclee el nuevo telefono del cliente");
+		String telefono = keyboard.nextLine();
+		cl.setTelefono(telefono);
+		
+		
+		cl.save();
+		
+		//DbController.getInstance().doUpdate(cl);
 		
 		//cat.setNombre(opcion);
 		//cat.save();;
-
+		}
 	}
 
 	public void deletecl() {
+
+		if(clientesLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que borrar espabila");
+		}else {
+		
 		Clientes cl = new Clientes();
 		String deleteando;
 		System.out.println("que quieres borrar ");
@@ -141,7 +170,7 @@ public class menuClientes {
 
 		int delete = Integer.parseInt(deleteando);
 		clientesLista.get(delete).delete();
-
+		}
 	}
 
 

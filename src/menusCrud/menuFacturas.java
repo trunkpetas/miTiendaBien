@@ -66,7 +66,7 @@ public class menuFacturas {
 	}
 	public void crearFac() throws ParseException {
 		Factura fc = new Factura();
-		System.out.println("Teclee la fecha de la neuva factura :");
+		System.out.println("Teclee la fecha de la neuva factura dd/MM/yyyy :");
 		String fecha = keyboard.nextLine();
 		fc.setFecha(sdf.parse(fecha));
 		System.out.println("Teclee el id del cliente de la factura :");
@@ -82,6 +82,9 @@ public class menuFacturas {
 	}
 
 	public void readFac() {
+		if(facturasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que leer espabila");
+		}else {
 
 		Factura fl = new Factura();
 		facturasLista = fl.list();
@@ -89,10 +92,14 @@ public class menuFacturas {
 			System.out.println(facturasLista.get(i));
 
 		}
+		}
 
 	}
 
-	public void actualizaFac() {
+	public void actualizaFac() throws ParseException {
+		if(facturasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que actualizar espabila");
+		}else {
 		Factura fc = new Factura();
 		String updateNombre;
 		String opcion;
@@ -105,21 +112,35 @@ public class menuFacturas {
 		facturasLista = fc.list();
 		
 		updateNombre = keyboard.nextLine();
-		fc.getByid(Integer.parseInt(updateNombre));
+		//fc = (Factura)fc.getByid(Integer.parseInt(updateNombre));
 
 		fc = (Factura) facturasLista.get(Integer.parseInt(updateNombre));
-		System.out.println("introduce el nuevo nombre");
-		opcion = keyboard.nextLine();
+		System.out.println("Teclee la fecha de la neuva factura dd/MM/yyyy :");
+		String fecha = keyboard.nextLine();
+		fc.setFecha(sdf.parse(fecha));
+		System.out.println("Teclee el id del cliente de la factura :");
+		String id = keyboard.nextLine();
+		fc.setId_cliente(Integer.parseInt(id));
+		System.out.println("Teclee la serie de la factura :");
+		String serie = keyboard.nextLine();
+		fc.setSerie(Integer.parseInt(serie));
+		//System.out.println("introduce el nuevo nombre");
+		//opcion = keyboard.nextLine();
 		//int cambiaNombre = Integer.parseInt(opcion);
 		//fc.setNombre(opcion);
-		DbController.getInstance().doUpdate(fc);
+		fc.save();
+		//DbController.getInstance().doUpdate(fc);
 		
 		//cat.setNombre(opcion);
 		//cat.save();;
 
 	}
+	}
 
 	public void deleteFacturas() {
+		if(facturasLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que borrar espabila");
+		}else {
 		Factura fc = new Factura();
 		String deleteando;
 		System.out.println("que quieres borrar ");
@@ -132,7 +153,7 @@ public class menuFacturas {
 
 		int delete = Integer.parseInt(deleteando);
 		facturasLista.get(delete).delete();
-
+		}
 	}
 
 }

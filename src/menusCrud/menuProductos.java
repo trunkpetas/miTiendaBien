@@ -70,7 +70,7 @@ public class menuProductos {
 		pro.setNombre(productoNuevo);
 		System.out.println("teclee el id de la cateogira del producto");
 		String idCat = keyboard.nextLine();
-		pro.setId_categoria(Integer.parseInt(idCat));
+		pro.setId_categoria(Integer.valueOf(idCat));
 		System.out.println("teclee el precio del produicto");
 		String precio = keyboard.nextLine();
 		pro.setPrecio(Integer.parseInt(precio));
@@ -85,20 +85,28 @@ public class menuProductos {
 	}
 
 	public void readCat() {
-
+		if(productosLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que mostrar espabila");
+		}else {
 		Producto prd = new Producto();
 		productosLista = prd.list();
 		for (int i = 0; i < productosLista.size(); i++) {
 			System.out.println(productosLista.get(i));
 
 		}
+		}
 
 	}
 
 	public void actualizaCategorias() {
+		
+		if(productosLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que actualizar espabila");
+		}else {
+		
 		Producto prd= new Producto();
 		String updateNombre;
-		String opcion;
+		String nombre;
 		System.out.println("que quieres actualizar capullo");
 		productosLista = prd.list();
 		for (int i = 0; i < productosLista.size(); i++) {
@@ -108,21 +116,40 @@ public class menuProductos {
 		productosLista = prd.list();
 		
 		updateNombre = keyboard.nextLine();
-		prd.getByid(Integer.parseInt(updateNombre));
-
 		prd = (Producto) productosLista.get(Integer.parseInt(updateNombre));
+
+		//prd = (Producto) productosLista.get(Integer.parseInt(updateNombre));
 		System.out.println("introduce el nuevo nombre");
-		opcion = keyboard.nextLine();
+		nombre = keyboard.nextLine();
+		prd.setNombre(nombre);
+		System.out.println("teclee el id de la cateogira del producto");
+		String idCat = keyboard.nextLine();
+		prd.setId_categoria(Integer.parseInt(idCat));
+		System.out.println("teclee el precio del produicto");
+		String precio = keyboard.nextLine();
+		prd.setPrecio(Integer.parseInt(precio));
+		System.out.println("introduce el stock de productos");
+		String stcokproducto = keyboard.nextLine();
+		prd.setStock(Integer.parseInt(stcokproducto));
+		
 		//int cambiaNombre = Integer.parseInt(opcion);
-		prd.setNombre(opcion);
-		DbController.getInstance().doUpdate(prd);
+		prd.setNombre(nombre);
+		prd.save();
+		//DbController.getInstance().doUpdate(prd);
 		
 		//cat.setNombre(opcion);
 		//cat.save();;
 
 	}
+	}
 
 	public void deleteCategorias() {
+		
+		if(productosLista.isEmpty()) {
+			System.out.println("Lista vacía no tengo nada que borrar espabila");
+		}else {
+			
+		
 		Producto prd = new Producto();
 		String deleteando;
 		System.out.println("que quieres borrar ");
@@ -136,5 +163,6 @@ public class menuProductos {
 		int delete = Integer.parseInt(deleteando);
 		productosLista.get(delete).delete();
 
+	}
 	}
 }

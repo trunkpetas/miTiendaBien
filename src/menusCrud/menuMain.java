@@ -23,7 +23,6 @@ public class menuMain {
 		System.out.println("Seleccione(1|2|3|4|5): ");
 
 		opcion = Integer.parseInt(keyboard.nextLine());
-		salir = false;
 
 		menuCategoria mC = new menuCategoria();
 		menuClientes mCl = new menuClientes();
@@ -49,12 +48,12 @@ public class menuMain {
 			break;
 		case 5:
 			System.out.println("FUERA\n");// salirApp();
-
-			salir = true;
+			System.exit(0);
+			
 			break;
 		default:
 			System.out.println("ACCION NO VALIDA!\n");
 		}
-	} while (!salir);
+	} while (true);
 	}
 }
