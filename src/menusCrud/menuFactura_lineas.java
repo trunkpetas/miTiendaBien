@@ -8,14 +8,14 @@ import src.models.Categoria;
 import src.models.comun.DbController;
 import src.models.comun.DbObject;
 
-public class menuCategoria {
+public class menuFactura_lineas {
 
 	private boolean salir;
 	private int opcion;
 	public Scanner keyboard = new Scanner(System.in);
 	List<DbObject> categoriasLista = new ArrayList<>();
 
-	public menuCategoria() {
+	public menuFactura_lineas() {
 
 	}
 
@@ -23,7 +23,7 @@ public class menuCategoria {
 
 		Scanner keyboard = new Scanner(System.in);
 		do {
-			System.out.println("~~~~~~~~~~MENÚ_CATEGORIAS~~~~~~~~~\n");
+			System.out.println("~~~~~~~~~~MENÚ_FACTURA_LINEAS~~~~~~~~~\n");
 			System.out.println("1.-Añadir\n2.-Leer\n3.-Actualizar\n4.-Eliminar\n5.-VUELTA AL MENU MAIN\n");
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
@@ -100,6 +100,7 @@ public class menuCategoria {
 				System.out.println(categoriasLista.get(i).getId() + "." + categoriasLista.get(i));
 
 			}
+			categoriasLista = cat.list();
 
 			updateNombre = keyboard.nextLine();
 			// cat = (Categoria) cat.getByid(Integer.parseInt(updateNombre));
