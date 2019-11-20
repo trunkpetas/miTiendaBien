@@ -15,17 +15,22 @@ public class menuMain {
 	public void display() throws ParseException {
 
 		Scanner keyboard = new Scanner(System.in);
+		
+		//if(opcion ==)
+		
 		do {
 			System.out.println("~~~~~~~~~~MENÚ~~~~~~~~~\n");
-			System.out.println("1.-Productos\n2.-Clientes\n3.-Categorias\n4.-Facturas\n5.-Salir\n");
+			System.out.println("1.-Productos\n2.-Clientes\n3.-Categorias\n4.-Facturas\n5.-FacturasLinea\n6.-Salir\n");
 			System.out.println("Seleccione(1|2|3|4|5): ");
 
+			
 			opcion = Integer.parseInt(keyboard.nextLine());
 
 			menuCategoria mC = new menuCategoria();
 			menuClientes mCl = new menuClientes();
 			menuFacturas mF = new menuFacturas();
 			menuProductos mP = new menuProductos();
+			menuFactura_lineas mfl = new menuFactura_lineas();
 			switch (opcion) {
 
 			case 1:
@@ -45,6 +50,11 @@ public class menuMain {
 				mF.display();
 				break;
 			case 5:
+				System.out.println("Cosa 5\n");// facturas();
+				mfl.display();
+				break;
+				
+			case 6:
 				System.out.println("FUERA\n");// salirApp();
 				System.exit(0);
 

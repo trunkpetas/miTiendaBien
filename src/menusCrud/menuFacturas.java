@@ -9,6 +9,7 @@ import java.util.Scanner;
 import src.models.Categoria;
 import src.models.Clientes;
 import src.models.Factura;
+import src.models.Producto;
 import src.models.comun.DbController;
 import src.models.comun.DbObject;
 
@@ -19,7 +20,9 @@ public class menuFacturas {
 
 	public Scanner keyboard = new Scanner(System.in);
 	List<DbObject> facturasLista = new ArrayList<>();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+	List<DbObject> clientesLista = new ArrayList<>();
 
 	public menuFacturas() {
 
@@ -69,10 +72,21 @@ public class menuFacturas {
 		Factura fc = new Factura();
 		System.out.println("Teclee la fecha de la neuva factura dd/MM/yyyy :");
 		String fecha = keyboard.nextLine();
-		fc.setFecha(sdf.parse(fecha));
+		//fc.setFecha(sdf.parse(fecha));
+		fc.setFecha(null);
+		Clientes cl = new Clientes();
+
+		clientesLista = cl.list();
+		for (int i = 0; i < clientesLista.size(); i++) {
+			System.out.println(clientesLista.get(i).getId() + " " + clientesLista.get(i));
+		}
+		
 		System.out.println("Teclee el id del cliente de la factura :");
-		String id = keyboard.nextLine();
-		fc.setId_cliente(Integer.parseInt(id));
+		int idCl = Integer.parseInt(keyboard.nextLine()); 
+		fc.setId_cliente((idCl));
+		
+		
+		
 		System.out.println("Teclee la serie de la factura :");
 		String serie = keyboard.nextLine();
 		fc.setSerie(Integer.parseInt(serie));
@@ -99,30 +113,53 @@ public class menuFacturas {
 	}
 
 	public void actualizaFac() throws ParseException {
+		Factura fc= new Factura();
+		facturasLista = fc.list();
+		fc = null;
 		if (facturasLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que actualizar espabila");
 		} else {
-			Factura fc = new Factura();
+			
 			String updateNombre;
 			String opcion;
 			System.out.println("que quieres actualizar capullo");
-			facturasLista = fc.list();
 			for (int i = 0; i < facturasLista.size(); i++) {
 				System.out.println(facturasLista.get(i).getId() + "." + facturasLista.get(i));
 
 			}
-			facturasLista = fc.list();
 
 			updateNombre = keyboard.nextLine();
 			// fc = (Factura)fc.getByid(Integer.parseInt(updateNombre));
 
-			fc = (Factura) facturasLista.get(Integer.parseInt(updateNombre));
+			for (DbObject dbObject : facturasLista) {
+				Factura f = (Factura) dbObject;
+				if (f.getId().equals(Integer.parseInt(updateNombre))) {
+					fc = f;
+					break;
+				}
+			}
+			if(fc == null) {
+				actualizaFac();
+				return;
+			}
+			
+			//fc = (Factura) facturasLista.get(Integer.parseInt(updateNombre));
 			System.out.println("Teclee la fecha de la neuva factura dd/MM/yyyy :");
 			String fecha = keyboard.nextLine();
-			fc.setFecha(sdf.parse(fecha));
+			//fc.setFecha(sdf.parse(fecha));
+			fc.setFecha(null);
+			
+			
+			Clientes cl = new Clientes();
+
+			clientesLista = cl.list();
+			for (int i = 0; i < clientesLista.size(); i++) {
+				System.out.println(clientesLista.get(i).getId() + " " + clientesLista.get(i));
+			}
+			
 			System.out.println("Teclee el id del cliente de la factura :");
-			String id = keyboard.nextLine();
-			fc.setId_cliente(Integer.parseInt(id));
+			int idCl = Integer.parseInt(keyboard.nextLine()); 
+			fc.setId_cliente((idCl));
 			System.out.println("Teclee la serie de la factura :");
 			String serie = keyboard.nextLine();
 			fc.setSerie(Integer.parseInt(serie));

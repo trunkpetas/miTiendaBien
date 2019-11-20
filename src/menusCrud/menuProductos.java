@@ -75,9 +75,9 @@ public class menuProductos {
 		}
 
 		System.out.println("teclee el id de la cateogira del producto");
-		int idCat = Integer.parseInt(keyboard.nextLine());
-		DbObject dboPene = cat.getByid(idCat);
-		pro.setId_categoria(dboPene.getId());
+		int idCat = Integer.parseInt(keyboard.nextLine()); 
+		pro.setId_categoria(idCat);
+		
 		System.out.println("teclee el precio del produicto");
 		String precio = keyboard.nextLine();
 		pro.setPrecio(Integer.parseInt(precio));
@@ -107,24 +107,39 @@ public class menuProductos {
 	}
 
 	public void actualizaPrdo() {
-
+		
+		
+		Producto prd = new Producto();
+		productosLista = prd.list();
+		prd = null;
 		if (productosLista.isEmpty()) {
 			System.out.println("Lista vacía no tengo nada que actualizar espabila");
 		} else {
 
-			Producto prd = new Producto();
+			
 			String updateNombre;
 			String nombre;
-			System.out.println("que quieres actualizar capullo");
-			productosLista = prd.list();
+			System.out.println("que quieres actualizar capullo \n");
+		 
 			for (int i = 0; i < productosLista.size(); i++) {
 				System.out.println(productosLista.get(i).getId() + "." + productosLista.get(i));
 
-			}
-			productosLista = prd.list();
+			} 
 
 			updateNombre = keyboard.nextLine();
-			prd = (Producto) productosLista.get(Integer.parseInt(updateNombre));
+			//(Producto) productosLista.get(Integer.parseInt(updateNombre));
+			
+			for (DbObject dbObject : productosLista) {
+				Producto p = (Producto) dbObject;
+				if (p.getId().equals(Integer.parseInt(updateNombre))) {
+					prd = p;
+					break;
+				}
+			}
+			if(prd == null) {
+				actualizaPrdo();
+				return;
+			}
 
 			// prd = (Producto) productosLista.get(Integer.parseInt(updateNombre));
 			System.out.println("introduce el nuevo nombre");
@@ -139,8 +154,7 @@ public class menuProductos {
 
 			System.out.println("teclee el id de la cateogira del producto");
 			int idCat = Integer.parseInt(keyboard.nextLine());
-			DbObject dboPene = cat.getByid(idCat);
-			prd.setId_categoria(dboPene.getId());
+			prd.setId_categoria(idCat);
 
 			System.out.println("teclee el precio del produicto");
 			String precio = keyboard.nextLine();

@@ -117,7 +117,7 @@ public class menuClientes {
 				System.out.println(clientesLista.get(i).getId() + "." + clientesLista.get(i));
 
 			}
-			clientesLista = cl.list();
+			//clientesLista = cl.list();
 
 			updateNombre = keyboard.nextLine();
 			// cl = (Clientes)cl.getByid(Integer.parseInt(updateNombre));
