@@ -32,7 +32,7 @@ public class menuMain {
 			menuProductos mP = new menuProductos();
 			menuFactura_lineas mfl = new menuFactura_lineas();
 			switch (opcion) {
-
+			
 			case 1:
 				System.out.println("Productos\n");// productos();
 				mP.display();
